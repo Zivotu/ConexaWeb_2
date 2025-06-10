@@ -75,3 +75,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide Google Translate banner */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
