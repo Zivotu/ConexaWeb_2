@@ -13,6 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <Footer />
+      <div className="gtranslate_wrapper" />
     </div>
   );
 };
