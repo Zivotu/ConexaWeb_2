@@ -38,18 +38,16 @@ const Navigation = () => {
 
   useEffect(() => {
     const addGoogleTranslateScript = () => {
-      const script = document.createElement('script');
-      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.defer = true;
-      document.body.appendChild(script);
-
       window.googleTranslateElementInit = () => {
-        new window.google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,hr,de',
-          autoDisplay: false,
-          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
-        });
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,hr,de',
+            autoDisplay: false,
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          'google_translate_element'
+        );
 
         // Hide default Google elements
         const css = `
@@ -69,6 +67,12 @@ const Navigation = () => {
           localStorage.setItem('conexaLangSet', '1');
         }
       };
+
+      const script = document.createElement('script');
+      script.src =
+        '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.defer = true;
+      document.body.appendChild(script);
     };
 
     const translateTo = (lang: string) => {
