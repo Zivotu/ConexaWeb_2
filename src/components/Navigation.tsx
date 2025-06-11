@@ -53,7 +53,6 @@ const Navigation = () => {
         const css = `
           .goog-logo-link, .goog-te-gadget span, .goog-te-banner-frame { display:none!important }
           body { top:0!important }
-          .goog-te-combo { position: absolute; left: -9999px; opacity: 0; }
         `;
         const styleElement = document.createElement('style');
         styleElement.innerHTML = css;
@@ -83,23 +82,9 @@ const Navigation = () => {
       }
     };
 
-    // React to manual change
-    const handleLanguageChange = (e: Event) => {
-      const target = e.target as HTMLSelectElement;
-      if (target.id === 'lang-select' || target.id === 'lang-select-mobile') {
-        translateTo(target.value);
-      }
-    };
-
-    document.addEventListener('change', handleLanguageChange);
-
     if (!window.google?.translate?.TranslateElement) {
       addGoogleTranslateScript();
     }
-
-    return () => {
-      document.removeEventListener('change', handleLanguageChange);
-    };
   }, []);
 
   return (
@@ -137,25 +122,14 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA Button and Language Selector */}
+          {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-3">
-            {/* Language Selector */}
-            <select 
-              id="lang-select" 
-              aria-label="Select site language"
-              className="h-9 px-3 text-sm font-inter text-gray-700 bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-[#FF7847] focus:border-transparent transition-all"
-            >
-              <option value="en">English</option>
-              <option value="hr">Croatian</option>
-              <option value="de">German</option>
-            </select>
-
-            <Button 
+            <Button
               className="bg-[#FF7847] hover:bg-orange-600 font-inter text-sm transition-all hover:scale-105 shadow-sm"
               asChild
               aria-label="Start using Conexa for free today"
             >
-              <a 
+              <a
                 href="https://play.google.com/store/apps/details?id=dreamteamstudio.online.conexa&hl=en-US&ah=gz9G-WCHhz5UVkJh502cYJIcG4E"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -195,23 +169,12 @@ const Navigation = () => {
               ))}
 
               <div className="flex flex-col space-y-3 pt-4 border-t border-gray-100">
-                {/* Language Selector for Mobile */}
-                <select 
-                  id="lang-select-mobile" 
-                  aria-label="Select site language"
-                  className="h-12 px-3 text-sm font-inter text-gray-700 bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-[#FF7847] focus:border-transparent transition-all"
-                >
-                  <option value="en">English</option>
-                  <option value="hr">Croatian</option>
-                  <option value="de">German</option>
-                </select>
-
-                <Button 
+                <Button
                   className="bg-[#FF7847] hover:bg-orange-600 font-inter text-sm h-12 w-full"
                   asChild
                   aria-label="Start using Conexa for free today"
                 >
-                  <a 
+                  <a
                     href="https://play.google.com/store/apps/details?id=dreamteamstudio.online.conexa&hl=en-US&ah=gz9G-WCHhz5UVkJh502cYJIcG4E"
                     target="_blank"
                     rel="noopener noreferrer"

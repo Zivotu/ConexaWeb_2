@@ -8,7 +8,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <div id="google_translate_element" style={{ display: 'none' }}></div>
+      <div id="google_translate_element"></div>
       <Navigation />
       <main className="flex-1 pt-16">
         {children}
