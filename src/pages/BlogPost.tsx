@@ -1,6 +1,7 @@
 // src/pages/Blog.jsx
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
+import { useTranslation } from 'react-i18next';
 
 const posts = [
   {
@@ -18,12 +19,13 @@ const posts = [
 ];
 
 const Blog = () => {
+  const { t } = useTranslation();
   return (
     <Layout>
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h1 className="font-poppins text-4xl text-gray-900 mb-12 text-center">
-            Conexa Blog
+            {t('blogpost.title','Conexa Blog')}
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {posts.map((post) => (
