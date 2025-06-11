@@ -72,7 +72,40 @@
       "startFree": "Započni besplatno",
       "viewPricing": "Pogledaj sve cijene",
       "isoCertified": "ISO 27001 certificirano",
-      "gdpr": "Usklađeno s GDPR-om"
+      "gdpr": "Usklađeno s GDPR-om",
+      "footer": {
+        "description": "Transformirajte svakodnevni život u stambenim zgradama i njihovim susjedstvima. Lokalni život, pojednostavljen.",
+        "gdprCompliant": "Usklađeno s GDPR-om",
+        "aria": {
+          "followTwitter": "Pratite nas na Twitteru",
+          "followLinkedIn": "Pratite nas na LinkedInu"
+        },
+        "sr": {
+          "twitter": "Twitter",
+          "linkedIn": "LinkedIn"
+        },
+        "product": {
+          "title": "Proizvod",
+          "features": "Moduli",
+          "howItWorks": "Kako radi",
+          "benefits": "Prednosti",
+          "pricing": "Cijene"
+        },
+        "company": {
+          "title": "Tvrtka",
+          "about": "O nama",
+          "blog": "Blog",
+          "contact": "Kontakt",
+          "faq": "Česta pitanja"
+        },
+        "legal": {
+          "privacyPolicy": "Pravila privatnosti",
+          "termsOfService": "Uvjeti korištenja",
+          "gdprCompliance": "Usklađenost s GDPR-om",
+          "cookiePolicy": "Pravila o kolačićima"
+        },
+        "copyright": "© 2024 Conexa. Sva prava pridržana. | Lokalni život, pojednostavljen."
+      }
     }
   }
 }
