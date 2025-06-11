@@ -11,12 +11,13 @@ Currently, two official plugins are available:
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-## Language Selector
+## Google Translate
 
-This project integrates a simple language selector powered by Google Translate. The widget is initialised from `index.html` using the script at `https://translate.google.com/translate_a/element.js`, enabling automatic translation of the interface.
+The application now displays the default Google Translate widget, loaded via the
+`GoogleTranslateWidget` component. The widget is initialised dynamically with the
+script `https://translate.google.com/translate_a/element.js` and supports English
+(EN), Croatian (HR) and German (DE).
 
-The selector is rendered above the main navigation bar as shown in [`src/components/Layout.tsx`](src/components/Layout.tsx) and offers buttons for switching between English (EN), Croatian (HR) and German (DE) as defined in [`src/components/LanguageSelector.tsx`](src/components/LanguageSelector.tsx).
-
-Translation logic is encapsulated in [`useGoogleTranslate`](src/hooks/use-google-translate.ts),
-which exposes a simple `translateTo(lang)` function used by the navigation bar.
+The component is rendered above the main navigation bar as shown in
+[`src/components/Layout.tsx`](src/components/Layout.tsx).
 
