@@ -18,6 +18,4 @@ The application now displays the default Google Translate widget, loaded via the
 script `https://translate.google.com/translate_a/element.js` and supports English
 (EN), Croatian (HR) and German (DE).
 
-The component is rendered above the main navigation bar as shown in
-[`src/components/Layout.tsx`](src/components/Layout.tsx).
 
