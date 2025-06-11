@@ -10,3 +10,10 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Language Selector
+
+This project integrates a simple language selector powered by Google Translate. The required script is loaded on page load from `https://translate.google.com/translate_a/element.js`, enabling automatic translation of the interface.
+
+The selector is rendered above the main navigation bar as shown in [`src/components/Layout.tsx`](src/components/Layout.tsx) and offers buttons for switching between English (EN), Croatian (HR) and German (DE) as defined in [`src/components/LanguageSelector.tsx`](src/components/LanguageSelector.tsx).
+
