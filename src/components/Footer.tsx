@@ -17,11 +17,14 @@ const Footer = () => {
                 <span className="text-white font-bold text-sm">C</span>
               </div>
               <span className="font-poppins font-semibold text-xl text-gray-900">
-                Conexa
+                {t('footer.logo', 'Conexa')}
               </span>
             </Link>
             <p className="text-gray-600 font-inter mb-6 max-w-md">
-              {t('footer.description')}
+              {t(
+                'footer.description',
+                'Transform everyday life in apartment buildings and their surrounding neighbourhoods. Local life, simplified.'
+              )}
             </p>
 
             {/* GDPR Compliance Badge */}
@@ -29,7 +32,7 @@ const Footer = () => {
               <div className="flex items-center bg-green-50 border border-green-200 rounded-lg px-3 py-2">
                 <Shield className="w-4 h-4 text-green-600 mr-2" />
                 <span className="text-sm font-inter text-green-700">
-                  {t('footer.gdprCompliant')}
+                  {t('footer.gdprBadge', 'GDPR Compliant')}
                 </span>
                 <Check className="w-4 h-4 text-green-600 ml-1" />
               </div>
@@ -41,10 +44,7 @@ const Footer = () => {
                 className="text-gray-400 hover:text-[#FF7847] transition-colors"
                 aria-label={t('footer.aria.followTwitter')}
               >
-                <span className="sr-only">
-                  {t('footer.sr.twitter')}
-                </span>
-                {/* SVG za Twitter */}
+                <span className="sr-only">{t('footer.social.twitter', 'Twitter')}</span>
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
@@ -54,10 +54,7 @@ const Footer = () => {
                 className="text-gray-400 hover:text-[#FF7847] transition-colors"
                 aria-label={t('footer.aria.followLinkedIn')}
               >
-                <span className="sr-only">
-                  {t('footer.sr.linkedIn')}
-                </span>
-                {/* SVG za LinkedIn */}
+                <span className="sr-only">{t('footer.social.linkedin', 'LinkedIn')}</span>
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path
                     fillRule="evenodd"
@@ -72,58 +69,26 @@ const Footer = () => {
           {/* Product Links */}
           <div>
             <h3 className="font-poppins font-semibold text-gray-900 mb-4">
-              {t('footer.product.title')}
+              {t('footer.product.title', 'Product')}
             </h3>
             <ul className="space-y-3">
-              <li>
-                <Link to="/modules" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">
-                  {t('footer.product.features')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/how-it-works" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">
-                  {t('footer.product.howItWorks')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/benefits" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">
-                  {t('footer.product.benefits')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/pricing" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">
-                  {t('footer.product.pricing')}
-                </Link>
-              </li>
+              <li><Link to="/modules" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">{t('footer.product.features', 'Features')}</Link></li>
+              <li><Link to="/how-it-works" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">{t('footer.product.how', 'How It Works')}</Link></li>
+              <li><Link to="/benefits" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">{t('footer.product.benefits', 'Benefits')}</Link></li>
+              <li><Link to="/pricing" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">{t('footer.product.pricing', 'Pricing')}</Link></li>
             </ul>
           </div>
 
           {/* Company Links */}
           <div>
             <h3 className="font-poppins font-semibold text-gray-900 mb-4">
-              {t('footer.company.title')}
+              {t('footer.company.title', 'Company')}
             </h3>
             <ul className="space-y-3">
-              <li>
-                <Link to="/about" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">
-                  {t('footer.company.about')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">
-                  {t('footer.company.blog')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">
-                  {t('footer.company.contact')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">
-                  {t('footer.company.faq')}
-                </Link>
-              </li>
+              <li><Link to="/about" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">{t('footer.company.about', 'About')}</Link></li>
+              <li><Link to="/blog" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">{t('footer.company.blog', 'Blog')}</Link></li>
+              <li><Link to="/contact" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">{t('footer.company.contact', 'Contact')}</Link></li>
+              <li><Link to="/faq" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter">{t('footer.company.faq', 'FAQ')}</Link></li>
             </ul>
           </div>
         </div>
@@ -132,34 +97,22 @@ const Footer = () => {
         <div className="border-t border-gray-100 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex flex-wrap justify-center md:justify-start space-x-6">
-              <Link
-                to="/privacy-policy"
-                className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter text-sm"
-              >
-                {t('footer.legal.privacyPolicy')}
+              <Link to="/privacy-policy" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter text-sm">
+                {t('footer.legal.privacy', 'Privacy Policy')}
               </Link>
-              <Link
-                to="/terms-of-service"
-                className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter text-sm"
-              >
-                {t('footer.legal.termsOfService')}
+              <Link to="/terms-of-service" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter text-sm">
+                {t('footer.legal.terms', 'Terms of Service')}
               </Link>
-              <Link
-                to="/gdpr-compliance"
-                className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter text-sm"
-              >
-                {t('footer.legal.gdprCompliance')}
+              <Link to="/gdpr-compliance" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter text-sm">
+                {t('footer.legal.gdpr', 'GDPR Compliance')}
               </Link>
-              <Link
-                to="/cookie-policy"
-                className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter text-sm"
-              >
-                {t('footer.legal.cookiePolicy')}
+              <Link to="/cookie-policy" className="text-gray-600 hover:text-[#FF7847] transition-colors font-inter text-sm">
+                {t('footer.legal.cookies', 'Cookie Policy')}
               </Link>
             </div>
 
             <p className="text-gray-600 font-inter text-sm text-center md:text-right">
-              {t('footer.copyright')}
+              {t('footer.copyright', '© 2024 Conexa. All rights reserved. | Local life, simplified.')}
             </p>
           </div>
         </div>
