@@ -26,3 +26,4 @@ useEffect(() => {
     return () => clearInterval(id);
   }
 }, [selectedLang]);
+export default Navigation;
