@@ -1,5 +1,6 @@
 import Navigation from './Navigation';
 import Footer from './Footer';
+import GoogleTranslateWidget from './GoogleTranslateWidget';
 import LanguageSelector from './LanguageSelector';
 import { useGoogleTranslate } from '@/hooks/use-google-translate';
 import { useEffect } from 'react';
@@ -25,6 +26,7 @@ const Layout = ({ children }: LayoutProps) => {
       <div className="self-end p-2">
         <LanguageSelector onSelect={translateTo} />
         <div id="google_translate_element" className="mt-2" />
+        <GoogleTranslateWidget />
       </div>
       <Navigation />
       <main className="flex-1 pt-16">
