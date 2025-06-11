@@ -17,3 +17,7 @@ This project integrates a simple language selector powered by Google Translate. 
 
 The selector is rendered above the main navigation bar as shown in [`src/components/Layout.tsx`](src/components/Layout.tsx) and offers buttons for switching between English (EN), Croatian (HR) and German (DE) as defined in [`src/components/LanguageSelector.tsx`](src/components/LanguageSelector.tsx).
 
+Translation logic is encapsulated in [`useGoogleTranslate`](src/hooks/use-google-translate.ts),
+which loads the Google Translate widget on demand and exposes a simple
+`translateTo(lang)` function used by the navigation bar.
+

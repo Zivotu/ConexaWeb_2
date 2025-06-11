@@ -10,6 +10,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
+import { useGoogleTranslate } from '@/hooks/use-google-translate';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -37,80 +38,16 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const [selectedLang, setSelectedLang] = useState('');
-
-  const applyTranslation = (lang: string): boolean => {
-    const sel = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
-    if (sel && sel.value !== lang) {
-      sel.value = lang;
-      sel.dispatchEvent(new Event('change'));
-      return true;
-    }
-    return false;
-  };
-
-  const translateTo = (lang: string) => {
-    setSelectedLang(lang);
-    applyTranslation(lang);
-  };
+  const translateTo = useGoogleTranslate('en', 'en,hr,de');
 
   useEffect(() => {
-    if (!selectedLang) return;
-    if (!applyTranslation(selectedLang)) {
-      const id = setInterval(() => {
-        if (applyTranslation(selectedLang)) {
-          clearInterval(id);
-        }
-      }, 500);
-      return () => clearInterval(id);
+    const userLang = (navigator.language || '').substring(0, 2);
+    const first = !localStorage.getItem('conexaLangSet');
+    if (first && ['hr', 'de'].includes(userLang)) {
+      translateTo(userLang);
+      localStorage.setItem('conexaLangSet', '1');
     }
-  }, [selectedLang]);
-
-  useEffect(() => {
-    const addGoogleTranslateScript = () => {
-      window.googleTranslateElementInit = () => {
-        new window.google.translate.TranslateElement(
-          {
-            pageLanguage: 'en',
-            includedLanguages: 'en,hr,de',
-            autoDisplay: false,
-            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-          },
-          'google_translate_element'
-        );
-
-        // Hide default Google elements
-        const css = `
-          #google_translate_element, .goog-te-combo, .goog-logo-link,
-          .goog-te-gadget span, .goog-te-banner-frame,
-          .goog-te-gadget-icon, .goog-te-balloon-frame,
-          #goog-gt-tt { display:none!important }
-          body { top:0!important }
-        `;
-        const styleElement = document.createElement('style');
-        styleElement.innerHTML = css;
-        document.head.appendChild(styleElement);
-
-        // Browser-language auto-switch on first visit
-        const userLang = (navigator.language || '').substring(0, 2);
-        const first = !localStorage.getItem('conexaLangSet');
-        if (first && ['hr', 'de'].includes(userLang)) {
-          translateTo(userLang);
-          localStorage.setItem('conexaLangSet', '1');
-        }
-      };
-
-      const script = document.createElement('script');
-      script.src =
-        '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.defer = true;
-      document.body.appendChild(script);
-    };
-
-    if (!window.google?.translate?.TranslateElement) {
-      addGoogleTranslateScript();
-    }
-  }, []);
+  }, [translateTo]);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
