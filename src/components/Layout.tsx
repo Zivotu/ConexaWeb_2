@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <div className="self-end p-2 flex gap-2 items-center">
+      <div className="self-end p-2 flex gap-2 items-center relative z-[60]">
         <LanguageSwitcher />
         <GoogleTranslateWidget />
       </div>
