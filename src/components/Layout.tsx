@@ -1,7 +1,6 @@
 import Navigation from './Navigation';
 import Footer from './Footer';
-import GoogleTranslateWidget from './GoogleTranslateWidget';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSelector from './LanguageSelector';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,8 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <div className="self-end p-2 flex gap-2 items-center relative z-[60]">
-        <LanguageSwitcher />
-        <GoogleTranslateWidget />
+        <LanguageSelector />
       </div>
       <Navigation />
       <main className="flex-1 pt-16">
