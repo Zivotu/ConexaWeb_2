@@ -11,12 +11,3 @@ Currently, two official plugins are available:
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-## Google Translate
-
-The application displays the default Google Translate widget via the
-`GoogleTranslateWidget` component. A custom `LanguageSwitcher` dropdown is also
-provided to trigger the language change. The widget is initialised dynamically
-with the script `https://translate.google.com/translate_a/element.js` and
-supports English (EN), Croatian (HR) and German (DE).
-
-
