@@ -1,79 +1,78 @@
-
 {
   "index": {
     "banner": {
-      "title": "Welcome to Conexa",
-      "description": "The all-in-one local community app—manage your building, chat with neighbors, and stay updated on nearby events.",
-      "getStarted": "Get Started"
+      "title": "Dobrodošli u Conexa",
+      "description": "Sve-u-jednom aplikacija za lokalnu zajednicu – upravljajte zgradom, razgovarajte sa susjedima i pratite događanja u blizini.",
+      "getStarted": "Započni odmah"
     },
     "socialProof": {
-      "video": "Watch a short video about the app and its features",
-      "podcast": "...or listen to a short podcast about the idea"
+      "video": "Pogledajte kratki video o aplikaciji i njenim mogućnostima",
+      "podcast": "...ili poslušajte kratki podcast o ideji"
     },
     "results": {
-      "title": "Real Results After Only 3 Months",
-      "stat1": "More community participation",
-      "stat2": "Faster issue resolution",
-      "stat3": "Resident satisfaction"
+      "title": "Stvarni rezultati već nakon 3 mjeseca",
+      "stat1": "Veća uključenost zajednice",
+      "stat2": "Brže rješavanje problema",
+      "stat3": "Zadovoljstvo stanara"
     },
     "features": {
-      "title": "Everything Your Building Needs",
-      "description": "All the essential modules to streamline communication, boost community engagement, and simplify building management.",
+      "title": "Sve što vaša zgrada treba",
+      "description": "Svi ključni moduli za bolju komunikaciju, jaču povezanost i lakše upravljanje zgradom.",
       "instantVoting": {
-        "title": "Instant Digital Voting",
-        "description": "Transform building decisions with secure digital polls and instant notifications."
+        "title": "Trenutno digitalno glasanje",
+        "description": "Donosite odluke brzo i sigurno putem digitalnih anketa i trenutnih obavijesti."
       },
       "announcements": {
-        "title": "Official Announcements",
-        "description": "Keep everyone informed with push notifications and digital notice board."
+        "title": "Službene obavijesti",
+        "description": "Informirajte sve stanare putem push notifikacija i digitalne oglasne ploče."
       },
       "chat": {
-        "title": "Community Chat",
-        "description": "Private group chat for building residents to connect and share instantly."
+        "title": "Razgovori u zajednici",
+        "description": "Privatni grupni razgovori za povezivanje i razmjenu među stanarima."
       },
       "maintenance": {
-        "title": "Maintenance Requests",
-        "description": "Report issues with photos and connect with verified local technicians."
+        "title": "Prijava kvarova",
+        "description": "Prijavite probleme sa slikama i kontaktirajte ovlaštene lokalne majstore."
       },
       "marketplace": {
-        "title": "Marketplace",
-        "description": "Discover local offers and events in your neighborhood with geo-targeting."
+        "title": "Tržnica",
+        "description": "Pronađite lokalne ponude i događanja u vašoj okolini putem geo-lokacije."
       },
       "bulletin": {
-        "title": "Bulletin Board",
-        "description": "A smarter way to share what matters with local advertising and community posts."
+        "title": "Oglasna ploča",
+        "description": "Pametniji način za dijeljenje informacija putem lokalnih oglasa i objava zajednice."
       },
-      "exploreModules": "Explore All Modules"
+      "exploreModules": "Istraži sve module"
     },
     "testimonials": {
-      "title": "What Residents Are Saying",
-      "quote1": "Since we introduced Conexa, community participation has skyrocketed. It's so much easier to get everyone involved in building decisions.",
-      "author1": "Marko K., Building Manager",
-      "quote2": "I love how quickly we can resolve issues now. Reporting a problem is simple, and the response is always fast and efficient.",
-      "author2": "Ivana N., Resident",
-      "quote3": "The community chat has been a game-changer. I feel more connected to my neighbors, and it's great for sharing information.",
-      "author3": "Tomislav B., Resident"
+      "title": "Što kažu stanari",
+      "quote1": "Otkad koristimo Conexa, angažman stanara je eksplodirao. Lakše je uključiti sve u odlučivanje.",
+      "author1": "Marko K., upravitelj zgrade",
+      "quote2": "Sviđa mi se koliko brzo sada rješavamo probleme. Prijava je jednostavna, a reakcija brza.",
+      "author2": "Ivana N., stanarka",
+      "quote3": "Grupni chat je promijenio sve. Osjećam se povezanije sa susjedima i lakše dijelimo informacije.",
+      "author3": "Tomislav B., stanar"
     },
     "faq": {
-      "title": "Frequently Asked Questions",
-      "q1": "What is Conexa and what does it offer?",
-      "a1": "Conexa is a comprehensive building management app designed to streamline communication, boost community engagement, and simplify building management. It offers modules for digital voting, announcements, community chat, maintenance requests, marketplace, and more.",
-      "q2": "How does Conexa improve community engagement?",
-      "a2": "Conexa improves community engagement through features like community chat, digital voting, and a marketplace for local offers and events. These tools make it easier for residents to connect, share information, and participate in building decisions.",
-      "q3": "Is Conexa easy to implement and use?",
-      "a3": "Yes, Conexa is designed to be user-friendly and easy to implement. The app has an intuitive interface, and the modules are straightforward to use. We also provide support and resources to help building managers and residents get started.",
-      "q4": "What kind of support do you offer to new users?",
-      "a4": "We offer comprehensive support to new users, including onboarding assistance, tutorials, and responsive customer service. Our team is available to answer questions and provide guidance to ensure a smooth experience with Conexa.",
-      "q5": "How can Conexa help with building management?",
-      "a5": "Conexa simplifies building management by providing tools for digital voting, official announcements, maintenance requests, and more. These features help streamline communication, improve efficiency, and reduce administrative overhead."
+      "title": "Najčešća pitanja",
+      "q1": "Što je Conexa i što nudi?",
+      "a1": "Conexa je sveobuhvatna aplikacija za upravljanje zgradom koja poboljšava komunikaciju i angažman stanara. Uključuje module za digitalno glasanje, obavijesti, chat, prijavu kvarova, tržnicu i više.",
+      "q2": "Kako Conexa poboljšava angažman stanara?",
+      "a2": "Putem grupnog chata, digitalnog glasanja i tržnice, Conexa potiče povezivanje, informiranje i uključivanje u odlučivanje.",
+      "q3": "Je li Conexa jednostavna za korištenje?",
+      "a3": "Conexa je dizajnirana da bude jednostavna za korištenje i brzo uvođenje. Intuitivno sučelje i podrška pomažu stanarima i upraviteljima da lako krenu.",
+      "q4": "Kakvu podršku nudite novim korisnicima?",
+      "a4": "Pružamo kompletnu podršku: pomoć pri uvođenju, tutorijale i korisničku službu koja brzo odgovara na upite.",
+      "q5": "Kako Conexa pomaže u upravljanju zgradom?",
+      "a5": "Conexa olakšava upravljanje zgradom alatima za digitalno glasanje, obavijesti, prijave kvarova i druge funkcije koje štede vrijeme i poboljšavaju učinkovitost."
     },
     "pricing": {
-      "title": "Ready to Transform Your Building?",
-      "description": "Start using Conexa today and experience the benefits of streamlined communication, boosted community engagement, and simplified building management.",
-      "startFree": "Start Free Today",
-      "viewPricing": "View All Pricing",
-      "isoCertified": "ISO 27001 Certified",
-      "gdpr": "GDPR Compliant"
+      "title": "Spremni za promjenu u vašoj zgradi?",
+      "description": "Počnite koristiti Conexa danas i iskusite bolju komunikaciju, veću uključenost i lakše upravljanje.",
+      "startFree": "Započni besplatno",
+      "viewPricing": "Pogledaj sve cijene",
+      "isoCertified": "ISO 27001 certificirano",
+      "gdpr": "Usklađeno s GDPR-om"
     }
   }
 }
