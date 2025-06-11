@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import LanguageSelector from './LanguageSelector';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -36,6 +37,14 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const translateTo = (lang: string) => {
+    const sel = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (sel && sel.value !== lang) {
+      sel.value = lang;
+      sel.dispatchEvent(new Event('change'));
+    }
+  };
+
   useEffect(() => {
     const addGoogleTranslateScript = () => {
       window.googleTranslateElementInit = () => {
@@ -51,7 +60,10 @@ const Navigation = () => {
 
         // Hide default Google elements
         const css = `
-          .goog-logo-link, .goog-te-gadget span, .goog-te-banner-frame { display:none!important }
+          #google_translate_element, .goog-te-combo, .goog-logo-link,
+          .goog-te-gadget span, .goog-te-banner-frame,
+          .goog-te-gadget-icon, .goog-te-balloon-frame,
+          #goog-gt-tt { display:none!important }
           body { top:0!important }
         `;
         const styleElement = document.createElement('style');
@@ -72,14 +84,6 @@ const Navigation = () => {
         '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
       script.defer = true;
       document.body.appendChild(script);
-    };
-
-    const translateTo = (lang: string) => {
-      const sel = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-      if (sel && sel.value !== lang) {
-        sel.value = lang;
-        sel.dispatchEvent(new Event('change'));
-      }
     };
 
     if (!window.google?.translate?.TranslateElement) {
@@ -137,6 +141,7 @@ const Navigation = () => {
                 Start Free Today
               </a>
             </Button>
+            <LanguageSelector onSelect={translateTo} />
           </div>
 
           {/* Mobile Menu Button */}
@@ -182,6 +187,7 @@ const Navigation = () => {
                     Start Free Today
                   </a>
                 </Button>
+                <LanguageSelector onSelect={translateTo} className="justify-center" />
               </div>
             </div>
           </div>
