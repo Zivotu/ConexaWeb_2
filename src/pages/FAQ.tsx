@@ -1,7 +1,9 @@
 import Layout from '@/components/Layout';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useTranslation } from 'react-i18next';
 
 const FAQ = () => {
+  const { t } = useTranslation();
   const faqs = [
     {
       question: "What is Conexa?",
@@ -43,10 +45,10 @@ const FAQ = () => {
       <section className="bg-gradient-to-br from-conexa-light-grey to-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-poppins font-semibold text-4xl lg:text-5xl text-gray-900 mb-6">
-            Frequently Asked Questions
+            {t('faq.hero.title','Frequently Asked Questions')}
           </h1>
           <p className="font-inter text-xl text-gray-600 max-w-3xl mx-auto">
-            Everything you need to know about Conexa. Can't find what you're looking for? Contact our support team.
+            {t("faq.hero.subtitle","Everything you need to know about Conexa. Can't find what you're looking for? Contact our support team.")}
           </p>
         </div>
       </section>
@@ -59,10 +61,10 @@ const FAQ = () => {
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-lg px-6">
                   <AccordionTrigger className="font-poppins font-semibold text-left text-gray-900 hover:text-conexa-primary">
-                    {faq.question}
+                    {t(`faq.items.${index}.question`, faq.question)}
                   </AccordionTrigger>
                   <AccordionContent className="font-inter text-gray-600 pb-6">
-                    {faq.answer}
+                    {t(`faq.items.${index}.answer`, faq.answer)}
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -75,20 +77,20 @@ const FAQ = () => {
       <section className="py-20 bg-conexa-light-grey">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-poppins font-semibold text-3xl text-gray-900 mb-4">
-            Still Have Questions?
+            {t('faq.contact.title','Still Have Questions?')}
           </h2>
           <p className="font-inter text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Our support team is here to help you get the most out of Conexa.
+            {t('faq.contact.subtitle','Our support team is here to help you get the most out of Conexa.')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="inline-block">
               <div className="bg-conexa-primary hover:bg-blue-700 text-white rounded-lg px-8 py-4 transition-all hover:scale-105">
-                <span className="font-inter font-medium">Contact Support</span>
+                <span className="font-inter font-medium">{t('faq.contact.support','Contact Support')}</span>
               </div>
             </a>
             <a href="mailto:hello@conexa.app" className="inline-block">
               <div className="bg-white hover:bg-gray-50 border border-gray-200 rounded-lg px-8 py-4 transition-all hover:scale-105">
-                <span className="font-inter font-medium text-gray-900">Email Us</span>
+                <span className="font-inter font-medium text-gray-900">{t('faq.contact.email','Email Us')}</span>
               </div>
             </a>
           </div>

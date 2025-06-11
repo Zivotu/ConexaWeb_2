@@ -1,22 +1,24 @@
 // src/pages/Blog1.jsx
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Blog1 - Smart Buildings, AI, and Digital Communities
  * Final version: only one image at the end (Blog_1_pic_1.jpg)
  */
 const Blog1 = () => {
+  const { t } = useTranslation();
   return (
     <Layout>
       {/* ===================== HERO ===================== */}
       <header className="bg-gradient-to-br from-conexa-light-grey to-white py-20">
         <div className="container mx-auto px-4 text-center max-w-4xl">
           <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl text-gray-900 mb-4 tracking-tight">
-            Smart Buildings, AI, and Digital Communities
+            {t('blog1.hero.title','Smart Buildings, AI, and Digital Communities')}
           </h1>
           <p className="font-inter text-xl md:text-2xl text-gray-600">
-            <em>The Paradox of Digital Connectivity</em>
+            <em>{t('blog1.hero.subtitle','The Paradox of Digital Connectivity')}</em>
           </p>
         </div>
       </header>
@@ -38,7 +40,7 @@ const Blog1 = () => {
           </p>
 
           {/* ===================== Orthogonality ===================== */}
-          <h2>Orthogonality of the Digital and the Neighbourhood</h2>
+          <h2>{t('blog1.orthogonality.title','Orthogonality of the Digital and the Neighbourhood')}</h2>
           <p>
             Over the centuries, urbanisation has brought advantages - opportunity, culture, infrastructure - but also <strong>anonymity, fragmented social ties</strong>, and the breakdown of traditional support networks. In <em>Bowling Alone</em>, Robert Putnam argues that when communal activities disappear, social capital quickly weakens.
           </p>
@@ -48,7 +50,7 @@ const Blog1 = () => {
 
           {/* ===================== Psychology ===================== */}
           <h2 className="text-3xl font-bold mt-16 mb-6 border-b border-gray-200 pb-2">
-            The Psychology of Neighbourhoods and Sense of Belonging
+            {t('blog1.psychology.title','The Psychology of Neighbourhoods and Sense of Belonging')}
           </h2>
           <p>
             In urban environments, researchers distinguish between <strong>satisfaction</strong> and <strong>belonging</strong>. Satisfaction shows which neighbourhood features matter day-to-day; belonging emerges through <strong>shared rituals and routines</strong>.
@@ -60,7 +62,7 @@ const Blog1 = () => {
 
           {/* ===================== Phygital ===================== */}
           <h2 className="text-3xl font-bold mt-16 mb-6 border-b border-gray-200 pb-2">
-            Phygital: The Synergy of Physical and Digital
+            {t('blog1.phygital.title','Phygital: The Synergy of Physical and Digital')}
           </h2>
           <p>
             The modern city demands a <strong>phygital approach</strong>: digital commands that play out in the real world. Imagine a push notification for tomorrow's snow clearance, after which a neighbour (or an algorithm) schedules a slot for everyone.
@@ -71,20 +73,18 @@ const Blog1 = () => {
 
           {/* ===================== Pillars ===================== */}
           <h2 className="text-3xl font-bold mt-16 mb-6 border-b border-gray-200 pb-2">
-            Essential Elements of Quality Urban Life
+            {t('blog1.pillars.title','Essential Elements of Quality Urban Life')}
           </h2>
-          <h3>1. Space and Greenery</h3>
-          <p>Nature within the city has a <strong>regenerative effect</strong>.</p>
-
-          <h3>2. Safety and Reliability</h3>
-          <p>A sense of security comes not only from surveillance, but also from <strong>reliable neighbours</strong>.</p>
-
-          <h3>3. Acts of Community</h3>
-          <p>Without <strong>collective action</strong>, there is no belonging.</p>
+          <h3>{t('blog1.pillars.space.title','1. Space and Greenery')}</h3>
+          <p>{t('blog1.pillars.space.desc','Nature within the city has a <strong>regenerative effect</strong>.')}</p>
+          <h3>{t('blog1.pillars.safety.title','2. Safety and Reliability')}</h3>
+          <p>{t('blog1.pillars.safety.desc','A sense of security comes not only from surveillance, but also from <strong>reliable neighbours</strong>.')}</p>
+          <h3>{t('blog1.pillars.community.title','3. Acts of Community')}</h3>
+          <p>{t('blog1.pillars.community.desc','Without <strong>collective action</strong>, there is no belonging.')}</p>
 
           {/* ===================== Conexa ===================== */}
           <h2 className="text-3xl font-bold mt-16 mb-6 border-b border-gray-200 pb-2">
-            Conexa.life at the Heart of the Story
+            {t('blog1.conexa.title','Conexa.life at the Heart of the Story')}
           </h2>
           <p>
             Conexa.life is not just another app - it aims to be the <strong>backbone of a new digital culture for neighbourhoods</strong>.
@@ -94,7 +94,7 @@ const Blog1 = () => {
           </p>
 
           {/* ===================== Conclusion ===================== */}
-          <h2>Conclusion - Returning the Warmth of the Neighbourhood</h2>
+          <h2>{t('blog1.conclusion.title','Conclusion - Returning the Warmth of the Neighbourhood')}</h2>
           <p>
             Digital technology solves many problems, yet <strong>neighbourhood ties remain irreplaceable</strong>.
           </p>
@@ -118,7 +118,7 @@ const Blog1 = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Try Conexa.life for Free
+              {t('blog1.cta','Try Conexa.life for Free')}
             </a>
           </p>
         </article>
@@ -131,7 +131,7 @@ const Blog1 = () => {
             to="/blog"
             className="inline-block bg-white border border-gray-300 hover:bg-gray-100 text-gray-800 font-medium px-6 py-3 rounded-full transition"
           >
-            ← Back to Blog
+            {t('blog1.back','\u2190 Back to Blog')}
           </Link>
         </div>
       </footer>

@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   Eye, Zap, Users, Settings, MapPin, Clock,
   MessageSquare, FileText, HelpCircle, Bell, Volume2,
@@ -8,6 +9,7 @@ import {
 } from 'lucide-react';
 
 const Benefits = () => {
+  const { t } = useTranslation();
   const benefits = [
     {
       icon: Eye,
@@ -116,10 +118,10 @@ const Benefits = () => {
       <section className="bg-gradient-to-br from-conexa-light-grey to-white py-12">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-poppins font-semibold text-4xl lg:text-5xl text-gray-900 mb-4">
-            Why Residents Love Conexa
+            {t('benefits.hero.title','Why Residents Love Conexa')}
           </h1>
           <p className="font-inter text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Built for real people in real buildings. From zgrada modules to local services, discover how Conexa reshapes daily living.
+            {t('benefits.hero.subtitle','Built for real people in real buildings. From zgrada modules to local services, discover how Conexa reshapes daily living.')}
           </p>
 
           {/* Module Icons Row */}
@@ -134,7 +136,7 @@ const Benefits = () => {
                   <Icon className="text-conexa-primary" size={24} />
                 </div>
                 <span className="text-xs text-gray-700 text-center font-medium">
-                  {label}
+                  {t(`benefits.modules.${index}.label`, label)}
                 </span>
               </Link>
             ))}
@@ -160,17 +162,19 @@ const Benefits = () => {
                         </div>
                         <div className="flex-1">
                           <h3 className="font-poppins font-semibold text-xl text-gray-900 mb-1">
-                            {benefit.title}
+                            {t(`benefits.items.${index}.title`, benefit.title)}
                           </h3>
                           <p className="font-inter text-conexa-primary font-medium mb-3">
-                            {benefit.subtitle}
+                            {t(`benefits.items.${index}.subtitle`, benefit.subtitle)}
                           </p>
-                          <p className="font-inter text-gray-600 mb-4">{benefit.description}</p>
+                          <p className="font-inter text-gray-600 mb-4">
+                            {t(`benefits.items.${index}.description`, benefit.description)}
+                          </p>
                           <ul className="space-y-1.5">
                             {benefit.features.map((feature, featureIndex) => (
                               <li key={featureIndex} className="flex items-center text-sm text-gray-500">
                                 <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></div>
-                                {feature}
+                                {t(`benefits.items.${index}.feature${featureIndex}`, feature)}
                               </li>
                             ))}
                           </ul>
