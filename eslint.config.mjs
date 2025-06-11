@@ -4,7 +4,23 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
+  // 1) Ignoriraj dist folder
   { ignores: ['dist'] },
+
+  // 2) Node skripte (backend, util itd.)
+  {
+    files: ['*.js', 'scripts/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'script',
+      globals: globals.node,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+    },
+  },
+
+  // 3) Frontend React kod
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
