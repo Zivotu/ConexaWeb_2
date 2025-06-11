@@ -3,11 +3,8 @@ import { useCallback, useEffect } from 'react';
 export const useGoogleTranslate = () => {
   // inject Google Translate script on mount
   useEffect(() => {
-    const hasTranslate = !!window.google?.translate?.TranslateElement;
-    if (hasTranslate) return;
 
-    window.googleTranslateElementInit = () => {
-      if (!window.google) return;
+
       new window.google.translate.TranslateElement(
         {
           pageLanguage: 'en',
@@ -19,6 +16,12 @@ export const useGoogleTranslate = () => {
       );
     };
 
+    if (window.google?.translate?.TranslateElement) {
+      initTranslate();
+      return;
+    }
+
+    window.googleTranslateElementInit = initTranslate;
     const script = document.createElement('script');
     script.src =
       '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
