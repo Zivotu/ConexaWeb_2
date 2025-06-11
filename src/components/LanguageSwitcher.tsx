@@ -16,9 +16,14 @@ const languages = [
 const LanguageSwitcher = () => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = event.target.value;
-    const select = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+
+    // The Google translate dropdown lives inside the translator iframe.
+    const iframe = document.querySelector<HTMLIFrameElement>('iframe[title="Google Translate"]');
+    const select = iframe?.contentWindow?.document.querySelector<HTMLSelectElement>('.goog-te-combo');
+
     if (select) {
       select.value = lang;
+      // Trigger Google's handler for language switching
       select.dispatchEvent(new Event('change'));
     }
   };
