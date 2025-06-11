@@ -9,7 +9,6 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import LanguageSelector from './LanguageSelector';
 import { useGoogleTranslate } from '@/hooks/use-google-translate';
 
 const Navigation = () => {
@@ -57,7 +56,8 @@ const Navigation = () => {
           ? 'bg-transparent translate-y-0' 
           : 'bg-white/95 backdrop-blur-sm border-b border-gray-100 translate-y-0'
     }`}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative">
+        <div id="google_translate_element"></div>
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
@@ -99,7 +99,6 @@ const Navigation = () => {
                 Start Free Today
               </a>
             </Button>
-            <LanguageSelector onSelect={translateTo} />
           </div>
 
           {/* Mobile Menu Button */}
@@ -145,7 +144,6 @@ const Navigation = () => {
                     Start Free Today
                   </a>
                 </Button>
-                <LanguageSelector onSelect={translateTo} className="justify-center" />
               </div>
             </div>
           </div>

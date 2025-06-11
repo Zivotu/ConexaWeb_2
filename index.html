@@ -37,9 +37,14 @@
         );
 
         const css = `
-          #google_translate_element, .goog-te-combo, .goog-logo-link,
-          .goog-te-gadget span, .goog-te-banner-frame,
-          .goog-te-gadget-icon, .goog-te-balloon-frame,
+          #google_translate_element {
+            position: fixed;
+            top: 8px;
+            right: 8px;
+            z-index: 1000;
+            overflow: hidden;
+          }
+          .goog-te-banner-frame,
           #goog-gt-tt { display:none!important }
           body { top:0!important }
         `;
