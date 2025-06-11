@@ -3,8 +3,14 @@ import { useCallback, useEffect } from 'react';
 export const useGoogleTranslate = () => {
   // inject Google Translate script on mount
   useEffect(() => {
-
     const initTranslate = () => {
+      if (!window.google?.translate?.TranslateElement) return;
+
+      const combo = document.querySelector(
+        '#google_translate_element select.goog-te-combo'
+      );
+      if (combo) return; // already initialized
+
       new window.google.translate.TranslateElement(
         {
           pageLanguage: 'en',
