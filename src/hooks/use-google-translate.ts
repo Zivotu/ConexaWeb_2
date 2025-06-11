@@ -1,36 +1,53 @@
-// This hook assumes the Google Translate widget is already
-// loaded on the page. It simply exposes a translateTo(lang)
-// function that updates the hidden select element injected by
-// the widget. The component using this hook should ensure the
-// script has been loaded (see index.html).
+import { useCallback, useEffect } from 'react';
 
-/**
- * Returns a function to translate the page to the given language code.
- * If the Google widget has not loaded yet, the translation will be
- * retried until it becomes available.
- */
-export function useGoogleTranslate() {
-  function apply(lang: string): boolean {
-    const sel = document.querySelector('.goog-te-combo') as
-      | HTMLSelectElement
-      | null;
-    if (sel && sel.value !== lang) {
-      sel.value = lang;
-      sel.dispatchEvent(new Event('change'));
-      return true;
+export const useGoogleTranslate = () => {
+  // inject Google Translate script on mount
+  useEffect(() => {
+    if (window.google) return;
+
+    window.googleTranslateElementInit = () => {
+      if (!window.google) return;
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          includedLanguages: 'en,hr,de',
+          autoDisplay: false,
+          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+        },
+        'google_translate_element'
+      );
+    };
+
+    const script = document.createElement('script');
+    script.src =
+      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  const translateTo = useCallback((lang: string) => {
+    function apply(): boolean {
+      const combo = document.querySelector<HTMLSelectElement>(
+        '#google_translate_element select.goog-te-combo'
+      );
+      if (combo && combo.value !== lang) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+        return true;
+      }
+      return !!combo;
     }
-    return false;
-  }
 
-  function translateTo(lang: string) {
-    if (!apply(lang)) {
+    if (!apply()) {
       const id = setInterval(() => {
-        if (apply(lang)) {
+        if (apply()) {
           clearInterval(id);
         }
       }, 500);
     }
-  }
+  }, []);
 
   return translateTo;
-}
+};
+
+export default useGoogleTranslate;

@@ -1,10 +1,3 @@
-declare global {
-  interface Window {
-    google?: any;
-    googleTranslateElementInit?: () => void;
-  }
-}
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -42,7 +35,7 @@ const Navigation = () => {
   useEffect(() => {
     const userLang = (navigator.language || '').substring(0, 2);
     const first = !localStorage.getItem('conexaLangSet');
-    if (first && ['hr', 'de'].includes(userLang)) {
+    if (first && ['hr', 'en', 'de'].includes(userLang)) {
       translateTo(userLang);
       localStorage.setItem('conexaLangSet', '1');
     }
@@ -57,7 +50,7 @@ const Navigation = () => {
           : 'bg-white/95 backdrop-blur-sm border-b border-gray-100 translate-y-0'
     }`}>
       <div className="container mx-auto px-4 relative">
-        <div id="google_translate_element"></div>
+        <div id="google_translate_element" className="sr-only" />
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">

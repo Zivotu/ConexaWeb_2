@@ -80,6 +80,9 @@
 .goog-te-banner-frame.skiptranslate {
   display: none !important;
 }
+.skiptranslate {
+  display: none !important;
+}
 
 /* Hide Google Translate default UI */
 #google_translate_element,
