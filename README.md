@@ -13,9 +13,10 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## Google Translate
 
-The application now displays the default Google Translate widget, loaded via the
-`GoogleTranslateWidget` component. The widget is initialised dynamically with the
-script `https://translate.google.com/translate_a/element.js` and supports English
-(EN), Croatian (HR) and German (DE).
+The application displays the default Google Translate widget via the
+`GoogleTranslateWidget` component. A custom `LanguageSwitcher` dropdown is also
+provided to trigger the language change. The widget is initialised dynamically
+with the script `https://translate.google.com/translate_a/element.js` and
+supports English (EN), Croatian (HR) and German (DE).
 
 
