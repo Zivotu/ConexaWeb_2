@@ -4,6 +4,13 @@ const languages = [
   { code: 'en', label: 'English' },
   { code: 'hr', label: 'Hrvatski' },
   { code: 'de', label: 'Deutsch' },
+  { code: 'es', label: 'Español' },
+  { code: 'fr', label: 'Français' },
+  { code: 'pt', label: 'Português' },
+  { code: 'nl', label: 'Nederlands' },
+  { code: 'ru', label: 'Русский' },
+  { code: 'ja', label: '日本語' },
+  { code: 'ar', label: 'العربية' },
 ];
 
 const LanguageSwitcher = () => {
