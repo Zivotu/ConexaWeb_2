@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Translate – Gumbi</title>
+  <style>
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-gadget-icon,
+    .goog-te-balloon-frame,
+    .goog-te-spinner-pos,
+    #goog-gt-tt,
+    iframe.goog-te-banner-frame {
+      display: none !important;
+    }
+
+    body {
+      top: 0 !important;
+    }
+
+    #google_translate_element {
+      display: none;
+    }
+
+    .notranslate {
+      font-weight: bold;
+      margin: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dobrodošli!</h1>
+
+  <div id="custom_translate_buttons">
+    <button class="notranslate" onclick="translateTo('en')">English</button>
+    <button class="notranslate" onclick="translateTo('de')">Deutsch</button>
+    <button class="notranslate" onclick="translateTo('fr')">Français</button>
+    <button class="notranslate" onclick="translateTo('es')">Español</button>
+  </div>
+
+  <div id="google_translate_element"></div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'hr'}, 'google_translate_element');
+    }
+
+    function translateTo(lang) {
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change'));
+      }
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
