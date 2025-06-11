@@ -21,10 +21,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-gray-600 font-inter mb-6 max-w-md">
-              {t(
-                'footer.description',
-                'Transform everyday life in apartment buildings and their surrounding neighbourhoods. Local life, simplified.'
-              )}
+              {t('footer.description', 'Transform everyday life in apartment buildings and their surrounding neighbourhoods. Local life, simplified.')}
             </p>
 
             {/* GDPR Compliance Badge */}
