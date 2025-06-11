@@ -3,7 +3,8 @@ import { useCallback, useEffect } from 'react';
 export const useGoogleTranslate = () => {
   // inject Google Translate script on mount
   useEffect(() => {
-    if (window.google) return;
+    const hasTranslate = !!window.google?.translate?.TranslateElement;
+    if (hasTranslate) return;
 
     window.googleTranslateElementInit = () => {
       if (!window.google) return;
