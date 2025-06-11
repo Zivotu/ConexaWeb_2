@@ -38,7 +38,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const translateTo = useGoogleTranslate('en', 'en,hr,de');
+  const translateTo = useGoogleTranslate();
 
   useEffect(() => {
     const userLang = (navigator.language || '').substring(0, 2);

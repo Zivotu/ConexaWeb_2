@@ -13,11 +13,10 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## Language Selector
 
-This project integrates a simple language selector powered by Google Translate. The required script is loaded on page load from `https://translate.google.com/translate_a/element.js`, enabling automatic translation of the interface.
+This project integrates a simple language selector powered by Google Translate. The widget is initialised from `index.html` using the script at `https://translate.google.com/translate_a/element.js`, enabling automatic translation of the interface.
 
 The selector is rendered above the main navigation bar as shown in [`src/components/Layout.tsx`](src/components/Layout.tsx) and offers buttons for switching between English (EN), Croatian (HR) and German (DE) as defined in [`src/components/LanguageSelector.tsx`](src/components/LanguageSelector.tsx).
 
 Translation logic is encapsulated in [`useGoogleTranslate`](src/hooks/use-google-translate.ts),
-which loads the Google Translate widget on demand and exposes a simple
-`translateTo(lang)` function used by the navigation bar.
+which exposes a simple `translateTo(lang)` function used by the navigation bar.
 
