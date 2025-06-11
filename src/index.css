@@ -81,4 +81,13 @@
   display: none !important;
 }
 
+/* Hide Google Translate default UI */
+#google_translate_element,
+.goog-te-combo,
+.goog-te-gadget-icon,
+.goog-te-balloon-frame,
+#goog-gt-tt {
+  display: none !important;
+}
+
 
