@@ -13,7 +13,15 @@ import { Menu, X } from 'lucide-react';
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [selectedLang, setSelectedLang] = useState('');
   const location = useLocation();
+
+  const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'de', label: 'Deutsch' },
+    { code: 'fr', label: 'Français' },
+    { code: 'es', label: 'Español' },
+  ];
 
   const navItems = [
     { label: 'Features', href: '/modules' },
@@ -35,6 +43,20 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const translateTo = (lang: string) => {
+    const sel = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (sel && sel.value !== lang) {
+      sel.value = lang;
+      sel.dispatchEvent(new Event('change'));
+    }
+  };
+
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const lang = e.target.value;
+    setSelectedLang(lang);
+    translateTo(lang);
+  };
 
   useEffect(() => {
     const addGoogleTranslateScript = () => {
@@ -72,14 +94,6 @@ const Navigation = () => {
         '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
       script.defer = true;
       document.body.appendChild(script);
-    };
-
-    const translateTo = (lang: string) => {
-      const sel = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-      if (sel && sel.value !== lang) {
-        sel.value = lang;
-        sel.dispatchEvent(new Event('change'));
-      }
     };
 
     if (!window.google?.translate?.TranslateElement) {
@@ -122,8 +136,23 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* Language Select & CTA Button */}
           <div className="hidden lg:flex items-center space-x-3">
+            <select
+              aria-label="Change language"
+              value={selectedLang}
+              onChange={handleLanguageChange}
+              className="border rounded px-2 py-1 text-sm"
+            >
+              <option value="" disabled>
+                Language
+              </option>
+              {languages.map((l) => (
+                <option key={l.code} value={l.code}>
+                  {l.label}
+                </option>
+              ))}
+            </select>
             <Button
               className="bg-[#FF7847] hover:bg-orange-600 font-inter text-sm transition-all hover:scale-105 shadow-sm"
               asChild
@@ -169,6 +198,21 @@ const Navigation = () => {
               ))}
 
               <div className="flex flex-col space-y-3 pt-4 border-t border-gray-100">
+                <select
+                  aria-label="Change language"
+                  value={selectedLang}
+                  onChange={handleLanguageChange}
+                  className="border rounded px-3 py-2 text-sm"
+                >
+                  <option value="" disabled>
+                    Language
+                  </option>
+                  {languages.map((l) => (
+                    <option key={l.code} value={l.code}>
+                      {l.label}
+                    </option>
+                  ))}
+                </select>
                 <Button
                   className="bg-[#FF7847] hover:bg-orange-600 font-inter text-sm h-12 w-full"
                   asChild
