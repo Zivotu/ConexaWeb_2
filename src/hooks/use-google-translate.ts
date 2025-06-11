@@ -4,7 +4,7 @@ export const useGoogleTranslate = () => {
   // inject Google Translate script on mount
   useEffect(() => {
 
-
+    const initTranslate = () => {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: 'en',
