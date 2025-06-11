@@ -15,11 +15,11 @@ const apiKey = process.env.GOOGLE_API_KEY;
 // 1) Popis fajlova (relativno na root)
 const files = [
   'src/components/Footer.tsx',
-  'src/pages/About.tsx',
-  'src/pages/Blog.tsx',
-  'src/pages/Index.tsx',
-  'src/pages/Contact.tsx',
-  'src/pages/NotFound.tsx',
+  'src/pages/Benefits.tsx',
+  'src/pages/Blog1.jsx',
+  'src/pages/Blog2.jsx',
+  'src/pages/BlogPost.tsx',
+  'src/pages/FAQ.tsx',
 ];
 
 // 2) Parsiraj svaki file i izvuci sve t('file.key','fallback') pozive
