@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import { useGoogleTranslate } from '@/hooks/use-google-translate';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,17 +28,6 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const translateTo = useGoogleTranslate();
-
-  useEffect(() => {
-    const userLang = (navigator.language || '').substring(0, 2);
-    const first = !localStorage.getItem('conexaLangSet');
-    if (first && ['hr', 'en', 'de'].includes(userLang)) {
-      translateTo(userLang);
-      localStorage.setItem('conexaLangSet', '1');
-    }
-  }, [translateTo]);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -92,7 +80,6 @@ const Navigation = () => {
               </a>
             </Button>
           </div>
-          <div id="google_translate_element" className="ml-4" />
 
           {/* Mobile Menu Button */}
           <button
