@@ -1,4 +1,3 @@
-
 {
   "index": {
     "banner": {
@@ -75,5 +74,24 @@
       "isoCertified": "ISO 27001 Certified",
       "gdpr": "GDPR Compliant"
     }
+  },
+  "modulesList": {
+    "alarm.title": "Alarm",
+    "bulletinBoard.title": "Bulletin Board",
+    "chatRoom.title": "Chat Room",
+    "documents.title": "Documents",
+    "homeRepairs.title": "Home Repairs",
+    "localPosts.title": "Local Posts",
+    "marketplace.title": "Marketplace",
+    "noiseAlerts.title": "Noise Alerts",
+    "officialNotices.title": "Official Notices",
+    "parkingSharing.title": "Parking Sharing",
+    "quiz.title": "Quiz",
+    "security.title": "Security",
+    "sharedRides.title": "Ride Sharing",
+    "sharedTasks.title": "Shared Tasks",
+    "wiseOwl.title": "Wise Owl",
+    "businessNetworking.title": "Business Networking",
+    "conferenceRooms.title": "Conference Rooms"
   }
 }
