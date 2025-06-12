@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import { ChevronsLeft, ChevronsRight } from 'lucide-react';
 import { modulesList } from '@/lib/modules';
+import { useTranslation } from 'react-i18next';
 
 interface ModuleNavProps {
   currentId: string;
 }
 
 export default function ModuleNav({ currentId }: ModuleNavProps) {
+  const { t } = useTranslation();
   const index = modulesList.findIndex((m) => m.id === currentId);
   if (index === -1) return null;
 
@@ -21,13 +23,13 @@ export default function ModuleNav({ currentId }: ModuleNavProps) {
           className="flex items-center space-x-2 font-poppins font-semibold text-gray-700"
         >
           <ChevronsLeft size={32} strokeWidth={3} />
-          <span>{prevModule.title}</span>
+          <span>{t(prevModule.titleKey)}</span>
         </Link>
         <Link
           to={nextModule.path}
           className="flex items-center space-x-2 font-poppins font-semibold text-gray-700"
         >
-          <span>{nextModule.title}</span>
+          <span>{t(nextModule.titleKey)}</span>
           <ChevronsRight size={32} strokeWidth={3} />
         </Link>
       </div>
