@@ -1,0 +1,31 @@
+{
+  "contact": {
+    "hero.title": "Kontaktirajte nas",
+    "hero.subtitle": "Spremni ste transformirati svoju građevinsku zajednicu? Imate pitanja o Conexi? Voljeli bismo čuti od vas.",
+    "form.title": "Pošaljite nam poruku",
+    "form.name": "Puno ime *",
+    "form.namePlaceholder": "Vaše puno ime",
+    "form.email": "Adresa e-pošte *",
+    "form.emailPlaceholder": "your@email.com",
+    "form.building": "Zgrada/Tvrtka",
+    "form.buildingPlaceholder": "Adresa vaše zgrade ili naziv tvrtke",
+    "form.message": "Poruka *",
+    "form.messagePlaceholder": "Recite nam nešto o vašoj zgradi, pitanjima ili kako vam možemo pomoći...",
+    "form.submit": "Pošalji poruku",
+    "other.title": "Drugi načini da nas kontaktirate",
+    "other.email": "E-pošta",
+    "other.response": "Obično odgovaramo u roku od 24 sata",
+    "other.office": "Ured",
+    "other.address": "Sjedište u Zagrebu",
+    "other.remote": "(Tvrtka koja prvenstveno radi na daljinu)",
+    "other.available": "Dostupno 24/7",
+    "links.title": "Brze poveznice",
+    "links.faq": "→ Često postavljana pitanja",
+    "links.how": "→ Kako Conexa funkcionira",
+    "links.pricing": "→ Informacije o cijenama",
+    "links.modules": "→ Dostupni moduli",
+    "video.title": "Pogledajte Conexu u akciji",
+    "video.description": "Pogledajte naš kratki video kako biste istražili sve module",
+    "video.button": "Pogledajte videozapis"
+  }
+}

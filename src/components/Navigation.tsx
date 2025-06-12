@@ -3,19 +3,21 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
+import { useTranslation } from 'react-i18next';
 
 const Navigation = () => {
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   const navItems = [
-    { label: 'Features', href: '/modules' },
-    { label: 'How It Works', href: '/how-it-works' },
-    { label: 'Benefits', href: '/benefits' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Contact', href: '/contact' },
+    { label: t('navigation.navItems.features', 'Features'), href: '/modules' },
+    { label: t('navigation.navItems.howItWorks', 'How It Works'), href: '/how-it-works' },
+    { label: t('navigation.navItems.benefits', 'Benefits'), href: '/benefits' },
+    { label: t('navigation.navItems.pricing', 'Pricing'), href: '/pricing' },
+    { label: t('navigation.navItems.blog', 'Blog'), href: '/blog' },
+    { label: t('navigation.navItems.contact', 'Contact'), href: '/contact' },
   ];
 
   const isActive = (href: string) => location.pathname === href;
@@ -31,21 +33,28 @@ const Navigation = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm translate-y-0' 
-        : location.pathname === '/' 
-          ? 'bg-transparent translate-y-0' 
-          : 'bg-white/95 backdrop-blur-sm border-b border-gray-100 translate-y-0'
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm translate-y-0'
+          : location.pathname === '/'
+            ? 'bg-transparent translate-y-0'
+            : 'bg-white/95 backdrop-blur-sm border-b border-gray-100 translate-y-0'
+      }`}
+      aria-label={t('navigation.ariaLabel', 'Main navigation')}
+    >
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-[#FF7847] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">C</span>
+              <span className="text-white font-bold text-sm">
+                {t('navigation.logo.initial', 'C')}
+              </span>
             </div>
-            <span className="font-poppins font-semibold text-xl text-gray-900">Conexa</span>
+            <span className="font-poppins font-semibold text-xl text-gray-900">
+              {t('navigation.logo.text', 'Conexa')}
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -71,14 +80,17 @@ const Navigation = () => {
             <Button
               className="bg-[#FF7847] hover:bg-orange-600 font-inter text-sm transition-all hover:scale-105 shadow-sm"
               asChild
-              aria-label="Start using Conexa for free today"
+              aria-label={t(
+                'navigation.cta.ariaLabel',
+                'Start using Conexa for free today'
+              )}
             >
               <a
                 href="https://play.google.com/store/apps/details?id=dreamteamstudio.online.conexa&hl=en-US&ah=gz9G-WCHhz5UVkJh502cYJIcG4E"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Start Free Today
+                {t('navigation.cta.text', 'Start Free Today')}
               </a>
             </Button>
           </div>
@@ -87,7 +99,7 @@ const Navigation = () => {
           <button
             className="lg:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
+            aria-label={t('navigation.mobileToggle', 'Toggle mobile menu')}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -117,14 +129,17 @@ const Navigation = () => {
                 <Button
                   className="bg-[#FF7847] hover:bg-orange-600 font-inter text-sm h-12 w-full"
                   asChild
-                  aria-label="Start using Conexa for free today"
+                  aria-label={t(
+                    'navigation.ctaMobile.ariaLabel',
+                    'Start using Conexa for free today'
+                  )}
                 >
                   <a
                     href="https://play.google.com/store/apps/details?id=dreamteamstudio.online.conexa&hl=en-US&ah=gz9G-WCHhz5UVkJh502cYJIcG4E"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Start Free Today
+                    {t('navigation.ctaMobile.text', 'Start Free Today')}
                   </a>
                 </Button>
               </div>

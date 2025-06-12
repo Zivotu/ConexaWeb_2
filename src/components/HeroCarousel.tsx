@@ -1,3 +1,4 @@
+// src/components/HeroCarousel.jsx
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import type { CarouselApi } from '@/components/ui/carousel';
@@ -9,33 +10,71 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const HeroCarousel = () => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [api, setApi] = useState<CarouselApi>();
 
   const slides = [
     {
-      title: "Your building, your neighbourhood, one smart mobile app.",
-      subtitle: "Everything that matters, right where you live.",
-      image: "/assets/Slide3.jpg",
-      alt: "Happy community using mobile technology",
-      overlayText: "Need it? Use it. More coming.",
+      title: t(
+        'herocarousel.slides.0.title',
+        'Your building, your neighbourhood, one smart mobile app.'
+      ),
+      subtitle: t(
+        'herocarousel.slides.0.subtitle',
+        'Everything that matters, right where you live.'
+      ),
+      image: '/assets/Slide3.jpg',
+      alt: t(
+        'herocarousel.slides.0.alt',
+        'Happy community using mobile technology'
+      ),
+      overlayText: t(
+        'herocarousel.slides.0.overlayText',
+        'Need it? Use it. More coming.'
+      ),
     },
     {
-      title: "Connect with your neighbors instantly.",
-      subtitle: "Join thousands of residents who use Conexa to stay informed and engaged with their community.",
-      image: "/assets/Slide2.png",
-      alt: "People connecting and communicating",
-      overlayText: "Smart building.",
+      title: t(
+        'herocarousel.slides.1.title',
+        'Connect with your neighbors instantly.'
+      ),
+      subtitle: t(
+        'herocarousel.slides.1.subtitle',
+        'Join thousands of residents who use Conexa to stay informed and engaged with their community.'
+      ),
+      image: '/assets/Slide2.png',
+      alt: t(
+        'herocarousel.slides.1.alt',
+        'People connecting and communicating'
+      ),
+      overlayText: t(
+        'herocarousel.slides.1.overlayText',
+        'Smart building.'
+      ),
     },
     {
-      title: "Need help? We're here for you!",
-      subtitle: "In the right bottom corner you can ask us live whatever you want to know more about Conexa, because we have a live chat!",
-      image: "/assets/Slide1.jpg",
-      alt: "Happy people in a community setting",
-      overlayText: "Live chat 24/7",
-    }
+      title: t(
+        'herocarousel.slides.2.title',
+        "Need help? We're here for you!"
+      ),
+      subtitle: t(
+        'herocarousel.slides.2.subtitle',
+        'In the right bottom corner you can ask us live whatever you want to know more about Conexa, because we have a live chat!'
+      ),
+      image: '/assets/Slide1.jpg',
+      alt: t(
+        'herocarousel.slides.2.alt',
+        'Happy people in a community setting'
+      ),
+      overlayText: t(
+        'herocarousel.slides.2.overlayText',
+        'Live chat 24/7'
+      ),
+    },
   ];
 
   useEffect(() => {
@@ -72,18 +111,27 @@ const HeroCarousel = () => {
                       i === 0 ? (
                         <span key={i}>
                           {part}
-                          <span className="text-conexa-primary">mobile app</span>
+                          <span className="text-conexa-primary">
+                            {t(
+                              'herocarousel.highlight.mobileApp',
+                              'mobile app'
+                            )}
+                          </span>
                         </span>
-                      ) : part
+                      ) : (
+                        part
+                      )
                     )
                   ) : (
                     slide.title
                   )}
                 </h1>
-                <p className="font-inter text-xl text-gray-600 mb-8">{slide.subtitle}</p>
+                <p className="font-inter text-xl text-gray-600 mb-8">
+                  {slide.subtitle}
+                </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button className="bg-conexa-primary hover:bg-blue-700 text-lg px-8 py-6 transition-all hover:scale-105">
-                    Get Conexa
+                    {t('herocarousel.button.getConexa', 'Get Conexa')}
                     <ArrowRight className="ml-2" size={20} />
                   </Button>
                 </div>

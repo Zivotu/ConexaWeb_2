@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
@@ -14,62 +13,67 @@ const apiKey = process.env.GOOGLE_API_KEY;
 
 // 1) Popis fajlova (relativno na root)
 const files = [
-  'src/components/Footer.tsx',
-  'src/pages/Benefits.tsx',
-  'src/pages/Blog1.jsx',
-  'src/pages/Blog2.jsx',
-  'src/pages/BlogPost.tsx',
-  'src/pages/FAQ.tsx',
+  'src/lib/modules.ts',
 ];
 
-// 2) Parsiraj svaki file i izvuci sve t('file.key','fallback') pozive
-const translations = {}; // { fileKey: { subKey: originalText, ... }, ... }
+// 2) Parsiraj svaki file i izvuci sve t('key','fallback') pozive
+const translations = {};
 
 files.forEach(filePath => {
-  const src = fs.readFileSync(filePath, 'utf-8');
-  const re = /t\(\s*['"]([^'"]+)['"]\s*,\s*['"`]([^'"`]+?)['"`]\s*\)/g;
+  // Učitamo sadržaj fajla
+  const content = fs.readFileSync(filePath, 'utf-8');
+
+  // Regex koji podržava escaped znakove unutar fallback-a
+  const re = /t\(\s*['"]([^'"]+)['"]\s*,\s*(['"`])((?:\\.|(?!\2).)*)\2\s*\)/g;
   let m;
-  while ((m = re.exec(src))) {
-    const fullKey = m[1];           // e.g. "footer.description"
-    const original = m[2].trim();   // e.g. "Transform..."
-    const [fileKey, ...rest] = fullKey.split('.');
+  while ((m = re.exec(content)) !== null) {
+    const fullKey = m[1];           // npr. "contact.hero.subtitle"
+    let original = m[3];            // npr. "Ready to transform... We\'d love..."
+    // maknemo escape slashove
+    original = original.replace(/\\'/g, "'").replace(/\\"/g, '"').trim();
+
+    const [ns, ...rest] = fullKey.split('.');
     const subKey = rest.join('.');
-    translations[fileKey] = translations[fileKey] || {};
-    translations[fileKey][subKey] = original;
+    translations[ns] = translations[ns] || {};
+    translations[ns][subKey] = original;
   }
 });
 
-// 3) Prevedi svaki skup tekstova putem Google Translate API-ja
+// 3) Prevedi skupove tekstova
 (async () => {
   const hrTranslations = {};
 
-  for (const fileKey of Object.keys(translations)) {
-    const entries = translations[fileKey];
+  for (const ns of Object.keys(translations)) {
+    const entries = translations[ns];
     const texts = Object.values(entries);
-    console.log(`🔄 Translating ${texts.length} strings for "${fileKey}" to Croatian...`);
+    if (!texts.length) continue;
 
-    const res = await axios.post(
-      `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`,
-      { q: texts, target: 'hr', format: 'text' }
-    );
+    console.log(`🔄 Translating ${texts.length} strings for "${ns}"...`);
+    let translated;
+    try {
+      const res = await axios.post(
+        `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`,
+        { q: texts, target: 'hr', format: 'text' }
+      );
+      translated = res.data.data.translations.map(t => t.translatedText);
+    } catch (err) {
+      console.error(`❌ Error translating "${ns}":`, err.message);
+      continue;
+    }
 
-    const translated = res.data.data.translations.map(t => t.translatedText);
-    const fileHr = {};
-    Object.keys(entries).forEach((subKey, i) => {
-      fileHr[subKey] = translated[i];
+    hrTranslations[ns] = {};
+    Object.keys(entries).forEach((sub, i) => {
+      hrTranslations[ns][sub] = translated[i];
     });
-
-    hrTranslations[fileKey] = fileHr;
   }
 
-  // 4) Učitaj postojeći JSON (ako postoji)
+  // 4) Merge u postojeći JSON
   const outPath = path.resolve('src/locales/hr/translation.json');
   let existing = {};
   if (fs.existsSync(outPath)) {
     existing = JSON.parse(fs.readFileSync(outPath, 'utf-8'));
   }
 
-  // 5) Merge i spremi novi JSON
   const merged = { ...existing, ...hrTranslations };
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, JSON.stringify(merged, null, 2), 'utf-8');

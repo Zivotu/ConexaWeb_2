@@ -13,98 +13,168 @@ import {
   FileText,
   Star,
 } from 'lucide-react';
+import YouTubeEmbed from '@/components/YouTubeEmbed'; // Keep this import if you have it in your project
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { useTranslation } from 'react-i18next'; // Added for internationalization
 
 const SecurityDetail: React.FC = () => {
+  const { t } = useTranslation(); // Initialize the useTranslation hook
   const id = 'security';
   const currentIndex = modulesList.findIndex((m) => m.id === id);
   const prevModule = currentIndex > 0 ? modulesList[currentIndex - 1] : null;
   const nextModule =
     currentIndex < modulesList.length - 1 ? modulesList[currentIndex + 1] : null;
 
+  // Accent color for the module, assuming it's defined in modulesList
+  const accentColor = modulesList[currentIndex]?.color || '#2196f3'; // Added fallback value
+
   const moduleData: { [key: string]: any } = {
     security: {
       id: 'security',
-      title: 'Security – Peace of Mind Through Visibility',
-      description:
-        'Gain real-time insights into your building’s security. Monitor cameras, track entries, and respond to incidents instantly.',
-      subtitle: '24/7 transparency for a safer community.',
-      extendedDescription:
-        'With live camera feeds, visitor logs, and instant alerts, the Security module ensures residents and administrators can maintain a secure environment at all times. View footage on demand, receive motion-detection warnings, and keep detailed audit trails for full accountability.',
+      title: t('securityDetail.title', 'Security'),
+      description: t(
+        'securityDetail.description',
+        "Gain real-time insights into your building’s security. Monitor cameras, track entries, and respond to incidents instantly."
+      ),
+      subtitle: t(
+        'securityDetail.subtitle',
+        '24/7 transparency for a safer community.'
+      ),
+      extendedDescription: t(
+        'securityDetail.extendedDescription',
+        'With live camera feeds, visitor logs, and instant alerts, the Security module ensures residents and administrators can maintain a secure environment at all times. View footage on demand, receive motion-detection warnings, and keep detailed audit trails for full accountability.'
+      ),
       highlights: [
         {
           icon: Video,
-          title: 'Live Camera Feeds',
-          description:
-            'Access real-time security camera streams directly from your device, anytime, anywhere.',
+          title: t(
+            'securityDetail.highlights.liveCameraFeeds.title',
+            'Live Camera Feeds'
+          ),
+          description: t(
+            'securityDetail.highlights.liveCameraFeeds.description',
+            'Access real-time security camera streams directly from your device, anytime, anywhere.'
+          ),
         },
         {
           icon: Users,
-          title: 'Visitor Management',
-          description:
-            'View digital visitor logs and grant or revoke access in seconds for complete control.',
+          title: t(
+            'securityDetail.highlights.visitorManagement.title',
+            'Visitor Management'
+          ),
+          description: t(
+            'securityDetail.highlights.visitorManagement.description',
+            'View digital visitor logs and grant or revoke access in seconds for complete control.'
+          ),
         },
         {
           icon: Bell,
-          title: 'Motion Detection Alerts',
-          description:
-            'Receive instant notifications when unusual activity is detected outside normal hours.',
+          title: t(
+            'securityDetail.highlights.motionDetectionAlerts.title',
+            'Motion Detection Alerts'
+          ),
+          description: t(
+            'securityDetail.highlights.motionDetectionAlerts.description',
+            'Receive instant notifications when unusual activity is detected outside normal hours.'
+          ),
         },
         {
           icon: Lock,
-          title: 'Secure Access Control',
-          description:
-            'Manage smart door locks and access permissions remotely to keep unauthorized users out.',
+          title: t(
+            'securityDetail.highlights.secureAccessControl.title',
+            'Secure Access Control'
+          ),
+          description: t(
+            'securityDetail.highlights.secureAccessControl.description',
+            'Manage smart door locks and access permissions remotely to keep unauthorized users out.'
+          ),
         },
         {
           icon: AlertCircle,
-          title: 'Emergency Response Integration',
-          description:
-            'Quickly notify security personnel or emergency services with a single tap in critical situations.',
+          title: t(
+            'securityDetail.highlights.emergencyResponseIntegration.title',
+            'Emergency Response Integration'
+          ),
+          description: t(
+            'securityDetail.highlights.emergencyResponseIntegration.description',
+            'Quickly notify security personnel or emergency services with a single tap in critical situations.'
+          ),
         },
         {
           icon: FileText,
-          title: 'Audit Trails & Reports',
-          description:
-            'Review historical logs of security events and generate reports for peace of mind.',
+          title: t(
+            'securityDetail.highlights.auditTrailsReports.title',
+            'Audit Trails & Reports'
+          ),
+          description: t(
+            'securityDetail.highlights.auditTrailsReports.description',
+            'Review historical logs of security events and generate reports for peace of mind.'
+          ),
         },
       ],
       testimonial: {
-        quote:
-          '“I love knowing I can check our building cameras at any time. It’s a game-changer for our community’s safety.”',
-        author: 'Building Resident',
+        quote: t(
+          'securityDetail.testimonial.quote',
+          '“I love knowing I can check our building cameras at any time. It’s a game-changer for our community’s safety.”'
+        ),
+        author: t('securityDetail.testimonial.author', 'Building Resident'),
       },
       screenshot: '/assets/Security_1.jpg',
       faq: [
         {
-          question: 'Who can view live camera feeds?',
-          answer:
-            'Only verified residents and administrators with the appropriate permissions can access live video streams.',
+          question: t(
+            'securityDetail.faq.q1',
+            'Who can view live camera feeds?'
+          ),
+          answer: t(
+            'securityDetail.faq.a1',
+            'Only verified residents and administrators with the appropriate permissions can access live video streams.'
+          ),
         },
         {
-          question: 'How is my privacy protected?',
-          answer:
-            'All video feeds and security data are fully encrypted and accessible only to authorized users within the building.',
+          question: t(
+            'securityDetail.faq.q2',
+            'How is my privacy protected?'
+          ),
+          answer: t(
+            'securityDetail.faq.a2',
+            'All video feeds and security data are fully encrypted and accessible only to authorized users within the building.'
+          ),
         },
         {
-          question: 'What happens if I detect suspicious activity?',
-          answer:
-            'You can trigger an alert directly from the app, notifying building admins or security personnel immediately.',
+          question: t(
+            'securityDetail.faq.q3',
+            'What happens if I detect suspicious activity?'
+          ),
+          answer: t(
+            'securityDetail.faq.a3',
+            'You can trigger an alert directly from the app, notifying building admins or security personnel immediately.'
+          ),
         },
         {
-          question: 'Can I control door locks from the app?',
-          answer:
-            'Yes—if your building has compatible smart locks, you can lock or unlock doors remotely and manage permissions on the fly.',
+          question: t(
+            'securityDetail.faq.q4',
+            'Can I control door locks from the app?'
+          ),
+          answer: t(
+            'securityDetail.faq.a4',
+            'Yes—if your building has compatible smart locks, you can lock or unlock doors remotely and manage permissions on the fly.'
+          ),
         },
         {
-          question: 'Are security events logged?',
-          answer:
-            'All incidents, alerts, and access events are recorded in the Audit Trails section for later review.',
+          question: t(
+            'securityDetail.faq.q5',
+            'Are security events logged?'
+          ),
+          answer: t(
+            'securityDetail.faq.a5',
+            'All incidents, alerts, and access events are recorded in the Audit Trails section for later review.'
+          ),
         },
       ],
     },
@@ -123,7 +193,7 @@ const SecurityDetail: React.FC = () => {
               className="text-[#2196f3] hover:text-[#1a73e8] flex items-center"
             >
               <ArrowLeft size={16} className="mr-1" />
-              All Modules
+              {t('securityDetail.breadcrumb.allModules', 'All Modules')}
             </Link>
             <span className="text-gray-500">/</span>
             <span className="text-gray-700">{module.title}</span>
@@ -141,19 +211,32 @@ const SecurityDetail: React.FC = () => {
             <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center">
               <img
                 src={module.screenshot}
-                alt="Security module mock-up"
-                className="max-h-[500px] w-auto rounded-xl shadow-2xl ring-4 ring-[#2196f3] object-contain"
+                alt={t(
+                  'securityDetail.hero.imageAlt',
+                  'Security module mock-up'
+                )}
+                className={
+                  'max-h-[500px] w-auto rounded-xl shadow-2xl ring-4 ring-[' +
+                  accentColor +
+                  '] object-contain'
+                }
               />
             </div>
 
             {/* Right: icon + text */}
             <div className="w-full lg:w-1/2">
               <div className="flex justify-center lg:justify-start mb-4">
-                <Video size={56} className="text-[#2196f3]" />
+                <Video
+                  size={56}
+                  className={'text-[' + accentColor + ']'}
+                />
               </div>
               <div className="text-center lg:text-left">
                 <h1 className="font-poppins font-semibold text-3xl lg:text-4xl text-gray-900 mb-4">
-                  {module.title}
+                  {t('securityDetail.hero.heading', {
+                    defaultValue: '{{moduleTitle}} – Peace of Mind Through Visibility',
+                    moduleTitle: module.title,
+                  })}
                 </h1>
                 <p className="font-inter text-lg lg:text-xl text-gray-600 mb-3">
                   {module.description}
@@ -180,7 +263,7 @@ const SecurityDetail: React.FC = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center mb-8">
               <h2 className="font-poppins font-semibold text-xl lg:text-2xl text-gray-900">
-                Highlights
+                {t('securityDetail.highlightsSection.title', 'Highlights')}
               </h2>
             </div>
             <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -191,7 +274,10 @@ const SecurityDetail: React.FC = () => {
                     key={idx}
                     className="flex flex-col items-center text-center p-4 lg:p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
                   >
-                    <IconComponent size={32} className="mb-3 text-[#2196f3]" />
+                    <IconComponent
+                      size={32}
+                      className={'mb-3 text-[' + accentColor + ']'}
+                    />
                     <h3 className="font-poppins font-semibold text-base lg:text-lg text-gray-900 mb-1">
                       {item.title}
                     </h3>
@@ -214,7 +300,10 @@ const SecurityDetail: React.FC = () => {
               <CardContent className="p-0">
                 <div className="flex justify-center mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star
+                      key={i}
+                      className="w-4 h-4 text-yellow-400 fill-current"
+                    />
                   ))}
                 </div>
                 <blockquote className="font-inter text-base lg:text-lg text-gray-700 mb-2">
@@ -235,7 +324,10 @@ const SecurityDetail: React.FC = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center mb-8">
               <h2 className="font-poppins font-semibold text-xl lg:text-2xl text-gray-900">
-                FAQ – {module.title}
+                {t('securityDetail.faqSection.title', {
+                  defaultValue: 'FAQ – {{moduleTitle}}',
+                  moduleTitle: module.title,
+                })}
               </h2>
             </div>
             <div className="max-w-4xl mx-auto">

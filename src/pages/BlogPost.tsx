@@ -20,23 +20,24 @@ const posts = [
 
 const Blog = () => {
   const { t } = useTranslation();
+
   return (
     <Layout>
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h1 className="font-poppins text-4xl text-gray-900 mb-12 text-center">
-            {t('blogpost.title','Conexa Blog')}
+            {t('blog.title', 'Conexa Blog')}
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {posts.map((post) => (
               <Link key={post.id} to={post.link} className="group">
                 <img
                   src={post.thumbnail}
-                  alt={post.title}
+                  alt={t(`blog.posts.${post.id}.alt`, post.title)}
                   className="w-full h-80 object-cover rounded-xl mb-4 group-hover:opacity-90 transition"
                 />
                 <h2 className="text-2xl font-poppins font-semibold text-gray-900 text-center group-hover:text-conexa-primary transition">
-                  {post.title}
+                  {t(`blog.posts.${post.id}.title`, post.title)}
                 </h2>
               </Link>
             ))}

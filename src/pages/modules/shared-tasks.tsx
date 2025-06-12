@@ -2,176 +2,272 @@ import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import ModuleNav from '@/components/ModuleNav';
 import { modulesList } from '@/lib/modules';
+import { Card, CardContent } from '@/components/ui/card';
 import {
-  ArrowLeft,
-  Calendar,
-  Eye,
-  Repeat,
-  Users,
+    ArrowLeft,
+    Car,
+    Calendar,
+    Users,
+    MessageSquare,
+    Bell,
+    ShieldCheck,
+    Star,
 } from 'lucide-react';
+import YouTubeEmbed from '@/components/YouTubeEmbed';
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/components/ui/accordion';
+import { useTranslation } from 'react-i18next'; // Dodano za internacionalizaciju
 
-const SharedTasksDetail: React.FC = () => {
-  const id = 'shared-tasks';
-  const currentIndex = modulesList.findIndex((m) => m.id === id);
-  const prevModule = currentIndex > 0 ? modulesList[currentIndex - 1] : null;
-  const nextModule =
-    currentIndex < modulesList.length - 1 ? modulesList[currentIndex + 1] : null;
+const SharedRidesDetail: React.FC = () => {
+    const { t } = useTranslation(); // Inicijalizacija useTranslation hooka
+    const id = 'shared-rides';
+    const currentIndex = modulesList.findIndex((m) => m.id === id);
+    const prevModule = currentIndex > 0 ? modulesList[currentIndex - 1] : null; // Zadržano, iako se ne koristi u trenutnom kodu
+    const nextModule =
+        currentIndex < modulesList.length - 1 ? modulesList[currentIndex + 1] : null; // Zadržano, iako se ne koristi u trenutnom kodu
 
-  const moduleData: { [key: string]: any } = {
-    'shared-tasks': {
-      id: 'shared-tasks',
-      title: 'Shared Tasks (e.g. Snow Shoveling)',
-      description:
-        'A transparent, automatic scheduler for shared chores—no more confusion about who’s next.',
-      subtitle: '',
-      extendedDescription:
-        'Building reps can create schedules for tasks like snow removal, yard cleaning, or entrance maintenance. Each resident is auto-assigned a day based on the chosen timeframe, and everyone sees the schedule in the app.',
-      highlights: [
-        {
-          icon: Calendar,
-          title: 'Automatic Day Assignment',
-          description:
-            'Select users and timeframe—the app evenly distributes task dates for you.',
+    // Boja akcenta za modul, pretpostavljam da je definirana u modulesList
+    const accentColor = modulesList[currentIndex]?.color || '#86be41'; // Dodana fallback vrijednost
+
+    const moduleData: { [key: string]: any } = {
+        'shared-rides': {
+            id: 'shared-rides',
+            title: t('sharedRidesDetail.title', 'Shared Rides'),
+            description: t('sharedRidesDetail.description', 'Offer or find rides with neighbors for a greener, more social commute.'),
+            subtitle: t('sharedRidesDetail.subtitle', 'Reduce costs, traffic, and emissions by carpooling within your community.'),
+            extendedDescription: t('sharedRidesDetail.extendedDescription', 'Whether you’re heading to work, school, or an event, Shared Rides lets you coordinate trips with verified residents nearby. Post your route and schedule, browse available rides, and connect in real-time—all within a secure, community-focused platform.'),
+            youtubeVideoId: '-vKcK1Te604',
+            highlights: [
+                {
+                    icon: Car,
+                    title: t('sharedRidesDetail.highlights.offerARide.title', 'Offer a Ride'),
+                    description: t('sharedRidesDetail.highlights.offerARide.description', 'Post your trip details—pickup, drop-off, and schedule—and let neighbors request a seat.'),
+                },
+                {
+                    icon: Calendar,
+                    title: t('sharedRidesDetail.highlights.scheduleTrips.title', 'Schedule Trips'),
+                    description: t('sharedRidesDetail.highlights.scheduleTrips.description', 'Set recurring or one-off rides, and manage availability directly in the app.'),
+                },
+                {
+                    icon: Users,
+                    title: t('sharedRidesDetail.highlights.communityVerified.title', 'Community Verified'),
+                    description: t('sharedRidesDetail.highlights.communityVerified.description', 'Only registered residents can participate, ensuring trust and accountability.'),
+                },
+                {
+                    icon: MessageSquare,
+                    title: t('sharedRidesDetail.highlights.inAppMessaging.title', 'In-App Messaging'),
+                    description: t('sharedRidesDetail.highlights.inAppMessaging.description', 'Chat with passengers or drivers to coordinate pickup points and timing.'),
+                },
+                {
+                    icon: Bell,
+                    title: t('sharedRidesDetail.highlights.realTimeNotifications.title', 'Real-Time Notifications'),
+                    description: t('sharedRidesDetail.highlights.realTimeNotifications.description', 'Receive instant alerts when someone joins your ride or if plans change.'),
+                },
+                {
+                    icon: ShieldCheck,
+                    title: t('sharedRidesDetail.highlights.safetyRatings.title', 'Safety & Ratings'),
+                    description: t('sharedRidesDetail.highlights.safetyRatings.description', 'Rate and review rides to build credibility; enjoy background-checked drivers for peace of mind.'),
+                },
+            ],
+            testimonial: {
+                quote: t('sharedRidesDetail.testimonial.quote', '“Shared Rides has completely transformed my commute. I’ve saved money, met great neighbors, and cut down on traffic!”'),
+                author: t('sharedRidesDetail.testimonial.author', 'Community Member'),
+            },
+            screenshot: '/assets/Rides_1.jpg',
+            faq: [
+                {
+                    question: t('sharedRidesDetail.faq.q1', 'Who can use Shared Rides?'),
+                    answer: t('sharedRidesDetail.faq.a1', 'Any verified resident of your building or neighborhood can offer or request rides.'),
+                },
+                {
+                    question: t('sharedRidesDetail.faq.q2', 'How do I offer a ride?'),
+                    answer: t('sharedRidesDetail.faq.a2', 'Tap “Offer Ride,” enter your departure time, pickup location, and available seats. Neighbors will request to join.'),
+                },
+                {
+                    question: t('sharedRidesDetail.faq.q3', 'Can I schedule recurring carpools?'),
+                    answer: t('sharedRidesDetail.faq.a3', 'Yes—select “Recurring” when creating a ride and choose days of the week for automatic postings.'),
+                },
+                {
+                    question: t('sharedRidesDetail.faq.q4', 'What if I need to cancel a ride?'),
+                    answer: t('sharedRidesDetail.faq.a4', 'Open your ride offer, tap “Cancel,” and all confirmed passengers will receive a notification immediately.'),
+                },
+                {
+                    question: t('sharedRidesDetail.faq.q5', 'Is there a rating system?'),
+                    answer: t('sharedRidesDetail.faq.a5', 'Absolutely. After each trip, both drivers and passengers can rate each other to maintain a safe, trustworthy community.'),
+                },
+            ],
         },
-        {
-          icon: Eye,
-          title: 'Clear Schedule Visibility',
-          description:
-            'Everyone sees who is responsible on which day, eliminating confusion.',
-        },
-        {
-          icon: Repeat,
-          title: 'Swaps & Changes',
-          description:
-            'Can’t do your turn? Send a swap request in one tap and get reassigned instantly.',
-        },
-        {
-          icon: Users,
-          title: 'Admin Privileges',
-          description:
-            'Building reps can edit or adjust the schedule at any time for full control.',
-        },
-      ],
-      benefits: [
-        'Fair distribution of responsibilities',
-        'Easy swapping without arguments',
-        'Transparency and accountability',
-        'Automated reminders and clean interface',
-      ],
-      screenshot: '/assets/Tasks_1.jpg',
-    },
-  };
+    };
 
-  const module = moduleData['shared-tasks'];
+    const module = moduleData['shared-rides'];
 
-  return (
-    <Layout>
-      {/* Breadcrumb */}
-      <section className="bg-[#f5f5f5] py-3">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center space-x-2 text-sm font-inter">
-            <Link
-              to="/modules"
-              className="text-[#617d8d] hover:text-[#4f6670] flex items-center"
-            >
-              <ArrowLeft size={16} className="mr-1" />
-              All Modules
-            </Link>
-            <span className="text-gray-500">/</span>
-            <span className="text-gray-700">{module.title}</span>
-          </div>
-        </div>
-      </section>
+    return (
+        <Layout>
+            {/* Breadcrumb */}
+            <section className="bg-[#f5f5f5] py-3">
+                <div className="container mx-auto px-4">
+                    <div className="flex items-center space-x-2 text-sm font-inter">
+                        <Link
+                            to="/modules"
+                            className="text-[#86be41] hover:text-[#6fa332] flex items-center"
+                        >
+                            <ArrowLeft size={16} className="mr-1" />
+                            {t('sharedRidesDetail.breadcrumb.allModules', 'All Modules')}
+                        </Link>
+                        <span className="text-gray-500">/</span>
+                        <span className="text-gray-700">{module.title}</span>
+                    </div>
+                </div>
+            </section>
 
-      <ModuleNav currentId="shared-tasks" />
+            <ModuleNav currentId="shared-rides" />
 
-      {/* Hero Section (Image & Text) */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-start lg:items-center lg:space-x-8">
-            {/* Left column: screenshot */}
-            <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center">
-              <img
-                src={module.screenshot}
-                alt="Shared Tasks module mock-up"
-                className="max-h-[500px] w-auto rounded-xl shadow-2xl ring-4 ring-[#617d8d] object-contain"
-              />
-            </div>
+            {/* Hero Section (Image & Text) */}
+            <section className="py-12 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-start lg:items-center lg:space-x-8">
+                        {/* Left column: screenshot */}
+                        <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center">
+                            <img
+                                src={module.screenshot}
+                                alt={t('sharedRidesDetail.hero.imageAlt', 'Shared Rides module mock-up')}
+                                className={"max-h-[500px] w-auto rounded-xl shadow-2xl ring-4 ring-[" + accentColor + "] object-contain"}
+                            />
+                        </div>
 
-            {/* Right column: icon + text */}
-            <div className="w-full lg:w-1/2">
-              <div className="flex justify-center lg:justify-start mb-4">
-                <Calendar size={56} className="text-[#617d8d]" />
-              </div>
-              <div className="text-center lg:text-left">
-                <h1 className="font-poppins font-semibold text-3xl lg:text-4xl text-gray-900 mb-4">
-                  {module.title}
-                </h1>
-                <p className="font-inter text-lg lg:text-xl text-gray-600 mb-3">
-                  {module.description}
-                </p>
-                {module.extendedDescription && (
-                  <p className="font-inter text-base lg:text-lg text-gray-600 max-w-prose mx-auto lg:mx-0 mt-4">
-                    {module.extendedDescription}
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                        {/* Right column: icon + text */}
+                        <div className="w-full lg:w-1/2">
+                            <div className="flex justify-center lg:justify-start mb-4">
+                                <Car size={56} className={"text-[" + accentColor + "]"} />
+                            </div>
+                            <div className="text-center lg:text-left">
+                                <h1 className="font-poppins font-semibold text-3xl lg:text-4xl text-gray-900 mb-4">
+                                    {t('sharedRidesDetail.hero.heading', '{{moduleTitle}} – Commute Together, Connect Locally', { moduleTitle: module.title })}
+                                </h1>
+                                <p className="font-inter text-lg lg:text-xl text-gray-600 mb-3">
+                                    {module.description}
+                                </p>
+                                {module.subtitle && (
+                                    <p className="font-inter text-base lg:text-lg text-gray-500 max-w-prose mx-auto lg:mx-0">
+                                        {module.subtitle}
+                                    </p>
+                                )}
+                                {module.extendedDescription && (
+                                    <p className="font-inter text-base lg:text-lg text-gray-600 max-w-prose mx-auto lg:mx-0 mt-4">
+                                        {module.extendedDescription}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-      {/* Highlights */}
-      {module.highlights && module.highlights.length > 0 && (
-        <section className="py-12 bg-[#f5f5f5]">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center mb-8">
-              <h2 className="font-poppins font-semibold text-xl lg:text-2xl text-gray-900">
-                Key Features
-              </h2>
-            </div>
-            <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {module.highlights.map((item: any, idx: number) => {
-                const IconComponent = item.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="flex flex-col items-center text-center p-4 lg:p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    <IconComponent size={32} className="mb-3 text-[#617d8d]" />
-                    <h3 className="font-poppins font-semibold text-base lg:text-lg text-gray-900 mb-1">
-                      {item.title}
-                    </h3>
-                    <p className="font-inter text-sm lg:text-base text-gray-600">
-                      {item.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
+            {/* Highlights */}
+            {module.highlights && module.highlights.length > 0 && (
+                <section className="py-12 bg-[#f5f5f5]">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-4xl mx-auto text-center mb-8">
+                            <h2 className="font-poppins font-semibold text-xl lg:text-2xl text-gray-900">
+                                {t('sharedRidesDetail.highlightsSection.title', 'Highlights')}
+                            </h2>
+                        </div>
+                        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            {module.highlights.map((item: any, idx: number) => {
+                                const IconComponent = item.icon;
+                                return (
+                                    <div
+                                        key={idx}
+                                        className="flex flex-col items-center text-center p-4 lg:p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                                    >
+                                        <IconComponent size={32} className={"mb-3 text-[" + accentColor + "]"} />
+                                        <h3 className="font-poppins font-semibold text-base lg:text-lg text-gray-900 mb-1">
+                                            {item.title}
+                                        </h3>
+                                        <p className="font-inter text-sm lg:text-base text-gray-600">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </section>
+            )}
 
-      {/* Benefits */}
-      {module.benefits && module.benefits.length > 0 && (
-        <section className="py-12 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center mb-8">
-              <h2 className="font-poppins font-semibold text-xl lg:text-2xl text-gray-900">
-                Benefits for Residents
-              </h2>
-            </div>
-            <ul className="max-w-3xl mx-auto list-disc list-inside space-y-2 text-gray-700 font-inter">
-              {module.benefits.map((benefit: string, idx: number) => (
-                <li key={idx}>{benefit}</li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-    </Layout>
-  );
+            {/* Testimonial */}
+            {module.testimonial && (
+                <section className="py-6 bg-white">
+                    <div className="container mx-auto px-4">
+                        <Card className="p-6 text-center bg-gray-50">
+                            <CardContent className="p-0">
+                                <div className="flex justify-center mb-3">
+                                    {[...Array(5)].map((_, i) => (
+                                        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                                    ))}
+                                </div>
+                                <blockquote className="font-inter text-base lg:text-lg text-gray-700 mb-2">
+                                    {module.testimonial.quote}
+                                </blockquote>
+                                <p className="font-poppins font-semibold text-gray-900 text-sm lg:text-base">
+                                    {module.testimonial.author}
+                                </p>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </section>
+            )}
+
+            {/* FAQ */}
+            {module.faq && module.faq.length > 0 && (
+                <section className="py-12 bg-white">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-4xl mx-auto text-center mb-8">
+                            <h2 className="font-poppins font-semibold text-xl lg:text-2xl text-gray-900">
+                                {t('sharedRidesDetail.faqSection.title', 'FAQ – {{moduleTitle}}', { moduleTitle: module.title })}
+                            </h2>
+                        </div>
+                        <div className="max-w-4xl mx-auto">
+                            <Accordion type="single" collapsible className="w-full">
+                                {module.faq.map((item: any, idx: number) => (
+                                    <AccordionItem key={idx} value={`faq-item-${idx}`}>
+                                        <AccordionTrigger className="font-poppins font-medium text-left py-2">
+                                            {item.question}
+                                        </AccordionTrigger>
+                                        <AccordionContent className="font-inter text-gray-600 pb-4">
+                                            {item.answer}
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* Video */}
+            {module.youtubeVideoId && (
+                <section className="py-12 bg-white">
+                    <div className="container mx-auto px-4">
+                        <div className="text-center mb-4">
+                            <h2 className="font-poppins font-semibold text-xl lg:text-2xl text-gray-900">
+                                {t('sharedRidesDetail.youtubeSection.title', 'Watch a Video About Shared Rides')}
+                            </h2>
+                        </div>
+                        <YouTubeEmbed
+                            videoId={module.youtubeVideoId}
+                            title={t('sharedRidesDetail.youtubeSection.videoTitle', 'Shared Rides Overview')}
+                            className="max-w-3xl mx-auto"
+                        />
+                    </div>
+                </section>
+            )}
+        </Layout>
+    );
 };
 
-export default SharedTasksDetail;
+export default SharedRidesDetail;
