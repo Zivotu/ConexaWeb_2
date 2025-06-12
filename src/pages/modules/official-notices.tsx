@@ -147,7 +147,7 @@ const OfficialNoticesDetail: React.FC = () => {
                             <div className="text-center lg:text-left">
                                 <h1 className="font-poppins font-semibold text-3xl lg:text-4xl text-gray-900 mb-4">
                                     {/* Naslov je sada u potpunosti unutar t() funkcije */}
-                                    {t('officialNoticesDetail.hero.heading', '{{moduleTitle}} – Stay Up to Date With Every Announcement', { moduleTitle: module.title })}
+                                    {t('officialNoticesDetail.hero.heading', '{{moduleTitle}} – YYY', { moduleTitle: module.title })}
                                 </h1>
                                 <p className="font-inter text-lg lg:text-xl text-gray-600 mb-3">
                                     {module.description}

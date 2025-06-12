@@ -13,7 +13,7 @@ const apiKey = process.env.GOOGLE_API_KEY;
 
 // 1) Popis fajlova (relativno na root)
 const files = [
-  'src/lib/modules.ts',
+  'src/pages/modules/official-notices.tsx',
 ];
 
 // 2) Parsiraj svaki file i izvuci sve t('key','fallback') pozive
